@@ -1,0 +1,3 @@
+node encode-file.js "file.zip"
+node decode-file.js "file_encoded.txt" "file.zip"
+ 
