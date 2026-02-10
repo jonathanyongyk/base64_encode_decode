@@ -1,13 +1,28 @@
 const fs = require('fs');
 
-// Get the input and output files from command line arguments
-const inputFile = process.argv[2];
-const outputFile = process.argv[3];
+// Parse named arguments
+function parseArgs(args) {
+    const parsed = {};
+    for (let i = 0; i < args.length; i++) {
+        if (args[i] === '--input' && i + 1 < args.length) {
+            parsed.input = args[++i];
+        } else if (args[i] === '--output' && i + 1 < args.length) {
+            parsed.output = args[++i];
+        }
+    }
+    return parsed;
+}
 
-if (!inputFile || !outputFile) {
-    console.error('Usage: node decode-file.js <input-file> <output-file>');
+const args = parseArgs(process.argv.slice(2));
+
+if (!args.input || !args.output) {
+    console.error('Usage: node decode-file.js --input <input-file> --output <output-file>');
+    console.error('Sample call: node decode-file.js --input "file_encoded.txt" --output "file.zip"');
     process.exit(1);
 }
+
+const inputFile = args.input;
+const outputFile = args.output;
 
 // Check if the input file exists
 if (!fs.existsSync(inputFile)) {

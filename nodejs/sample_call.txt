@@ -1,3 +1,4 @@
-node encode-file.js "file.zip"
-node decode-file.js "file_encoded.txt" "file.zip"
+node encode-file.js --input "file.zip"
+node encode-file.js --input "file.zip" --output "file_encoded.txt"
+node decode-file.js --input "file_encoded.txt" --output "file.zip"
  
