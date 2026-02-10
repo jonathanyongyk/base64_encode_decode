@@ -1,0 +1,3 @@
+python encode-file.py --input "file.zip"
+python encode-file.py --input "file.zip" --output "file_encoded.txt"
+python decode-file.py --input "file_encoded.txt" --output "file.zip"
